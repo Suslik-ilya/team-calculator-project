@@ -56,16 +56,41 @@ class Calculator:
             self.number_click(value)
 
     def number_click(self, value):
-        # TODO: ИЛЬЯ - реализовать ввод чисел
-        pass
+        current = self.current_input.get()
+        if current == "0" or current == "Error":
+            self.current_input.set(value)
+        else:
+            self.current_input.set(current + value)
 
     def operation_click(self, operation):
-        # TODO: ИЛЬЯ - реализовать базовые операции
-        pass
+        try:
+            self.previous_value = float(self.current_input.get())
+            self.pending_operation = operation
+            self.current_input.set("0")
+        except:
+            self.current_input.set("Error")
 
     def calculate(self):
-        # TODO: ИЛЬЯ - реализовать вычисление
-        pass
+        try:
+            current_value = float(self.current_input.get())
+            if self.pending_operation == '+':
+                result = self.previous_value + current_value
+            elif self.pending_operation == '-':
+                result = self.previous_value - current_value
+            elif self.pending_operation == '*':
+                result = self.previous_value * current_value
+            elif self.pending_operation == '/':
+                if current_value == 0:
+                    result = "Error"
+                else:
+                    result = self.previous_value / current_value
+            else:
+                result = current_value
+
+            self.current_input.set(str(result))
+            self.pending_operation = None
+        except:
+            self.current_input.set("Error")
 
     def scientific_operation(self, operation):
         # TODO: ЕГОР - реализовать научные операции
