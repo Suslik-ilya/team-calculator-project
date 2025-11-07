@@ -93,14 +93,44 @@ class Calculator:
             self.current_input.set("Error")
 
     def scientific_operation(self, operation):
-        # TODO: ЕГОР - реализовать научные операции
-        pass
+        try:
+            current_value = float(self.current_input.get())
+            if operation == 'sin':
+                result = sin(current_value)
+            elif operation == 'cos':
+                result = cos(current_value)
+            elif operation == 'x^y':
+                self.previous_value = current_value
+                self.pending_operation = 'pow'
+                self.current_input.set("0")
+                return
+            elif operation == '√':
+                if current_value < 0:
+                    result = "Error"
+                else:
+                    result = sqrt(current_value)
+            elif operation == '%':
+                result = current_value / 100
+            elif operation == 'floor':
+                result = floor(current_value)
+            elif operation == 'ceil':
+                result = ceil(current_value)
+
+            self.current_input.set(str(result))
+        except:
+            self.current_input.set("Error")
 
     def memory_operation(self, operation):
-        # TODO: ЕГОР - реализовать работу с памятью
-        pass
-
-
+        try:
+            current_value = float(self.current_input.get())
+            if operation == 'M+':
+                self.memory += current_value
+            elif operation == 'MC':
+                self.memory = 0
+            elif operation == 'MR':
+                self.current_input.set(str(self.memory))
+        except:
+            self.current_input.set("Error")
 if __name__ == "__main__":
     root = tk.Tk()
     app = Calculator(root)
