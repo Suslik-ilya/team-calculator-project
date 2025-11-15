@@ -1,0 +1,4 @@
+# Папки IDE (PyCharm)
+.idea/
+# Кэш Python
+__pycache__/
