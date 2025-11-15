@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Team Calculator
+Name[ru]=Командный Калькулятор
+Comment=Simple calculator with scientific functions
+Comment[ru]=Простой калькулятор с научными функциями
+Exec=calculator
+Icon=org.calculator.TeamCalculator
+Terminal=false
+Type=Application
+Categories=Utility;Calculator;
+StartupNotify=true

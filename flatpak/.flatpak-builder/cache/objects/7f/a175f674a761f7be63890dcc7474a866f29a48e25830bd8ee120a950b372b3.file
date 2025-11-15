@@ -1,0 +1,6 @@
+Metadata-Version: 2.1
+Name: tkinter-standalone
+Version: 3.9
+Summary: Tkinter packaged as an external package for flatpak.
+License-File: LICENSE
+

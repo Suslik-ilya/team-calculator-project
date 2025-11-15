@@ -16,14 +16,13 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://prdownloads.sourceforge.net/tcl/tcl9.0.2-src.tar.gz",
-          "sha256": "e074c6a8d9ba2cddf914ba97b6677a552d7a52a3ca102924389a05ccb249b520",
-          "config-opts": ["--disable-zipfs"]
+          "url": "https://prdownloads.sourceforge.net/tcl/tcl8.6.13-src.tar.gz",
+          "sha256": "43a1fae7412f61ff11de2cfd05d28cfc3a73762f354a417c62370a54e2caf066"
         }
       ],
       "subdir": "unix",
       "post-install": [
-        "chmod +w /app/lib/libtcl9.0.so"
+        "chmod +w /app/lib/libtcl8.6.so"
       ]
     },
     {
@@ -31,14 +30,13 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://prdownloads.sourceforge.net/tcl/tk9.0.2-src.tar.gz",
-          "sha256": "76fb852b2f167592fe8b41aa6549ce4e486dbf3b259a269646600e3894517c76",
-          "config-opts": ["--disable-zipfs"]
+          "url": "https://prdownloads.sourceforge.net/tcl/tk8.6.13-src.tar.gz",
+          "sha256": "2e65fa069a23365440a3c56c556b8673b5e32a283800d8d9b257e3f584ce0675"
         }
       ],
       "subdir": "unix",
       "post-install": [
-        "chmod +w /app/lib/libtk9.0.so"
+        "chmod +w /app/lib/libtk8.6.so"
       ]
     },
     {
@@ -60,8 +58,8 @@
       "buildsystem": "simple",
       "build-commands": [
         "install -Dm755 calculator.py /app/bin/calculator",
-        "install -Dm644 calculator.desktop /app/share/applications/org.calculator.TeamCalculator.desktop",
-        "install -Dm644 icons/calculator.svg /app/share/icons/hicolor/scalable/apps/org.calculator.TeamCalculator.svg"
+        "install -Dm644 flatpak/calculator.desktop /app/share/applications/org.calculator.TeamCalculator.desktop",
+        "install -Dm644 flatpak/icons/calculator.svg /app/share/icons/hicolor/scalable/apps/org.calculator.TeamCalculator.svg"
       ],
       "sources": [
         {

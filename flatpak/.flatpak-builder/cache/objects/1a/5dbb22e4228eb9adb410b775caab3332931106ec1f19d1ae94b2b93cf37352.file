@@ -1,0 +1,5 @@
+[Runtime]
+name=org.calculator.TeamCalculator.Debug
+
+[ExtensionOf]
+ref=app/org.calculator.TeamCalculator/x86_64/master

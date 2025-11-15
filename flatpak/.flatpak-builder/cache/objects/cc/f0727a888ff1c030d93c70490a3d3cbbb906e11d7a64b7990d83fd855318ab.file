@@ -1,0 +1,18 @@
+[Application]
+name=org.calculator.TeamCalculator
+runtime=org.freedesktop.Platform/x86_64/22.08
+sdk=org.freedesktop.Sdk/x86_64/22.08
+command=calculator
+
+[Context]
+shared=ipc;
+sockets=x11;wayland;
+filesystems=home;
+
+[Extension org.calculator.TeamCalculator.Debug]
+directory=lib/debug
+autodelete=true
+no-autodownload=true
+
+[Build]
+built-extensions=org.calculator.TeamCalculator.Debug;

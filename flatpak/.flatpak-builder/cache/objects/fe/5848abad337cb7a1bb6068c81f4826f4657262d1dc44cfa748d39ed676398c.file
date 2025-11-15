@@ -1,0 +1,74 @@
+{
+  "id" : "org.calculator.TeamCalculator",
+  "runtime" : "org.freedesktop.Platform",
+  "runtime-version" : "22.08",
+  "runtime-commit" : "89f5b42b081f8cfcf7fbb1d858b82af06fe19681e6f6ea4c3b769dcb6c1ac295",
+  "sdk" : "org.freedesktop.Sdk",
+  "sdk-commit" : "8827c57f7591c686e71b9d283d2336ed7088e8e27ce3fd588a058a73788b8c98",
+  "command" : "calculator",
+  "modules" : [
+    {
+      "name" : "tcl",
+      "subdir" : "unix",
+      "sources" : [
+        {
+          "url" : "https://prdownloads.sourceforge.net/tcl/tcl8.6.13-src.tar.gz",
+          "sha256" : "43a1fae7412f61ff11de2cfd05d28cfc3a73762f354a417c62370a54e2caf066",
+          "type" : "archive"
+        }
+      ],
+      "post-install" : [
+        "chmod +w /app/lib/libtcl8.6.so"
+      ]
+    },
+    {
+      "name" : "tk",
+      "subdir" : "unix",
+      "sources" : [
+        {
+          "url" : "https://prdownloads.sourceforge.net/tcl/tk8.6.13-src.tar.gz",
+          "sha256" : "2e65fa069a23365440a3c56c556b8673b5e32a283800d8d9b257e3f584ce0675",
+          "type" : "archive"
+        }
+      ],
+      "post-install" : [
+        "chmod +w /app/lib/libtk8.6.so"
+      ]
+    },
+    {
+      "name" : "tkinter",
+      "buildsystem" : "simple",
+      "sources" : [
+        {
+          "url" : "https://github.com/iwalton3/tkinter-standalone",
+          "commit" : "d9cb97c5bd4f814c73678366e0e48220776b6ad3",
+          "type" : "git"
+        }
+      ],
+      "build-commands" : [
+        "pip3 install --prefix=/app --no-build-isolation ."
+      ]
+    },
+    {
+      "name" : "team-calculator",
+      "buildsystem" : "simple",
+      "sources" : [
+        {
+          "path" : "..",
+          "type" : "dir"
+        }
+      ],
+      "build-commands" : [
+        "install -Dm755 calculator.py /app/bin/calculator",
+        "install -Dm644 flatpak/calculator.desktop /app/share/applications/org.calculator.TeamCalculator.desktop",
+        "install -Dm644 flatpak/icons/calculator.svg /app/share/icons/hicolor/scalable/apps/org.calculator.TeamCalculator.svg"
+      ]
+    }
+  ],
+  "finish-args" : [
+    "--share=ipc",
+    "--socket=x11",
+    "--socket=wayland",
+    "--filesystem=home"
+  ]
+}
